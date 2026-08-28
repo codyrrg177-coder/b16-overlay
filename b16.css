@@ -454,3 +454,54 @@ html, body {
   content: "CAPS" !important;
   font-size: 25px !important;
 }
+/* ============================================================
+   B16 FINAL ALIGNMENT PATCH
+   Append this to the VERY END of b16.css
+   - Moves F into the proper top-left slot of the right cluster
+   - Straightens/aligns WASD while preserving the slight B16 tilt
+   ============================================================ */
+
+/* WASD: cleaner alignment */
+.xbox.edit .face.up {
+  left: 205px !important;
+  top: 82px !important;
+  transform: rotate(8deg) !important;
+}
+.xbox.edit .face.up::before {
+  transform: rotate(-8deg) !important;
+}
+
+.xbox.edit .face.left {
+  left: 100px !important;
+  top: 182px !important;
+  transform: rotate(8deg) !important;
+}
+.xbox.edit .face.left::before {
+  transform: rotate(-8deg) !important;
+}
+
+.xbox.edit .face.down {
+  left: 205px !important;
+  top: 182px !important;
+  transform: rotate(8deg) !important;
+}
+.xbox.edit .face.down::before {
+  transform: rotate(-8deg) !important;
+}
+
+.xbox.edit .face.right {
+  left: 310px !important;
+  top: 182px !important;
+  transform: rotate(8deg) !important;
+}
+.xbox.edit .face.right::before {
+  transform: rotate(-8deg) !important;
+}
+
+/* F: place it cleanly above the left-arrow key */
+.xbox.edit .face.up::after {
+  left: 405px !important;  /* absolute visual x ≈ 610 */
+  top: 8px !important;     /* absolute visual y ≈ 90 */
+  transform: rotate(-8deg) !important;
+}
+
