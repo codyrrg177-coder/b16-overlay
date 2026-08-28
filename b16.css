@@ -1,0 +1,416 @@
+
+/* Haute42 B16 - GamePad Viewer EDIT CSS
+   Use with: ?p=1&editcss=RAW_CSS_URL
+   Targets the built-in Xbox skin with the .edit class.
+*/
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+/* Turn the Xbox body into a clean B16 plate */
+.controller.xbox.edit {
+  width: 980px !important;
+  height: 470px !important;
+  background:
+    linear-gradient(180deg, rgba(26,28,34,.98), rgba(10,11,15,.98)) !important;
+  border: 2px solid rgba(255,255,255,.22) !important;
+  border-radius: 34px !important;
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.48),
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 0 0 12px rgba(255,255,255,.018) !important;
+  position: relative !important;
+  overflow: visible !important;
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+
+.controller.xbox.edit::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 15px !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  border-radius: 24px !important;
+  pointer-events: none !important;
+}
+
+/* Hide Xbox-only chrome */
+.xbox.edit .quadrant,
+.xbox.edit .arrows {
+  display: none !important;
+}
+
+/* All control groups become full-board coordinate systems */
+.xbox.edit .dpad,
+.xbox.edit .abxy,
+.xbox.edit .bumpers,
+.xbox.edit .triggers,
+.xbox.edit .sticks {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 980px !important;
+  height: 470px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Neutral keycap styling */
+.xbox.edit .face,
+.xbox.edit .button,
+.xbox.edit .bumper,
+.xbox.edit .stick {
+  box-sizing: border-box !important;
+  position: absolute !important;
+  width: 76px !important;
+  height: 76px !important;
+  border-radius: 13px !important;
+  border: 2px solid rgba(255,255,255,.28) !important;
+  background: linear-gradient(180deg, rgba(61,64,73,.98), rgba(25,27,33,.98)) !important;
+  background-image: none !important;
+  box-shadow:
+    0 7px 0 rgba(4,5,8,.98),
+    0 11px 20px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.12) !important;
+  opacity: 1 !important;
+  float: none !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+.xbox.edit .face::before,
+.xbox.edit .button::before,
+.xbox.edit .bumper::before,
+.xbox.edit .stick::before {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: rgba(255,255,255,.96) !important;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
+}
+
+/* Press feedback */
+.xbox.edit .face.pressed,
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.pressed {
+  background: linear-gradient(180deg, #f4f5f7, #b7bbc3) !important;
+  border-color: rgba(255,255,255,.95) !important;
+  box-shadow:
+    0 2px 0 rgba(4,5,8,.98),
+    0 5px 15px rgba(0,0,0,.35),
+    0 0 26px rgba(255,255,255,.25),
+    inset 0 1px 0 #fff !important;
+}
+.xbox.edit .face.pressed::before,
+.xbox.edit .button.pressed::before,
+.xbox.edit .bumper.pressed::before,
+.xbox.edit .stick.pressed::before {
+  color: #11141a !important;
+  text-shadow: none !important;
+}
+
+/* ===== TILTED WASD ===== */
+
+/* W = DPAD UP */
+.xbox.edit .face.up {
+  left: 215px !important;
+  top: 92px !important;
+  width: 76px !important;
+  height: 76px !important;
+  transform: rotate(7deg) !important;
+}
+.xbox.edit .face.up::before {
+  content: "W" !important;
+  transform: rotate(-7deg) !important;
+}
+
+/* A = DPAD LEFT */
+.xbox.edit .face.left {
+  left: 112px !important;
+  top: 182px !important;
+  width: 76px !important;
+  height: 76px !important;
+  transform: rotate(7deg) !important;
+}
+.xbox.edit .face.left::before {
+  content: "A" !important;
+  transform: rotate(-7deg) !important;
+}
+
+/* S = DPAD DOWN */
+.xbox.edit .face.down {
+  left: 215px !important;
+  top: 182px !important;
+  width: 76px !important;
+  height: 76px !important;
+  bottom: auto !important;
+  transform: rotate(1deg) !important;
+}
+.xbox.edit .face.down::before {
+  content: "S" !important;
+  transform: rotate(-1deg) !important;
+}
+
+/* D = DPAD RIGHT */
+.xbox.edit .face.right {
+  left: 318px !important;
+  top: 182px !important;
+  right: auto !important;
+  width: 76px !important;
+  height: 76px !important;
+  transform: rotate(-7deg) !important;
+}
+.xbox.edit .face.right::before {
+  content: "D" !important;
+  transform: rotate(7deg) !important;
+}
+
+/* F = duplicate of DPAD UP, so it lights with W */
+.xbox.edit .face.up::after {
+  content: "F" !important;
+  box-sizing: border-box !important;
+  position: absolute !important;
+  left: 410px !important;
+  top: -5px !important;
+  width: 76px !important;
+  height: 76px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 13px !important;
+  border: 2px solid rgba(255,255,255,.28) !important;
+  background: linear-gradient(180deg, rgba(61,64,73,.98), rgba(25,27,33,.98)) !important;
+  box-shadow:
+    0 7px 0 rgba(4,5,8,.98),
+    0 11px 20px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.12) !important;
+  color: rgba(255,255,255,.96) !important;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
+  transform: rotate(-7deg) !important;
+}
+.xbox.edit .face.up.pressed::after {
+  background: linear-gradient(180deg, #f4f5f7, #b7bbc3) !important;
+  border-color: #fff !important;
+  color: #11141a !important;
+  text-shadow: none !important;
+}
+
+/* ===== RIGHT CLUSTER ===== */
+
+/* E + Q = R1 */
+.xbox.edit .bumper.right {
+  left: 510px !important;
+  top: 182px !important;
+  right: auto !important;
+  transform: none !important;
+}
+.xbox.edit .bumper.right::before {
+  content: "E" !important;
+}
+.xbox.edit .bumper.right::after {
+  content: "Q" !important;
+  box-sizing: border-box !important;
+  position: absolute !important;
+  left: 205px !important;
+  top: -90px !important;
+  width: 76px !important;
+  height: 76px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 13px !important;
+  border: 2px solid rgba(255,255,255,.28) !important;
+  background: linear-gradient(180deg, rgba(61,64,73,.98), rgba(25,27,33,.98)) !important;
+  box-shadow:
+    0 7px 0 rgba(4,5,8,.98),
+    0 11px 20px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.12) !important;
+  color: rgba(255,255,255,.96) !important;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
+}
+.xbox.edit .bumper.right.pressed::after {
+  background: linear-gradient(180deg, #f4f5f7, #b7bbc3) !important;
+  border-color: #fff !important;
+  color: #11141a !important;
+  text-shadow: none !important;
+}
+
+/* ▲ = Y / Triangle */
+.xbox.edit .button.y {
+  left: 612px !important;
+  top: 92px !important;
+}
+.xbox.edit .button.y::before { content: "▲" !important; }
+
+/* ◀ = X */
+.xbox.edit .button.x {
+  left: 612px !important;
+  top: 182px !important;
+}
+.xbox.edit .button.x::before { content: "◀" !important; }
+
+/* ▼ = B */
+.xbox.edit .button.b {
+  left: 715px !important;
+  top: 182px !important;
+  right: auto !important;
+}
+.xbox.edit .button.b::before { content: "▼" !important; }
+
+/* Unused Xbox A */
+.xbox.edit .button.a {
+  display: none !important;
+}
+
+/* < = L1 */
+.xbox.edit .bumper.left {
+  left: 818px !important;
+  top: 92px !important;
+  transform: none !important;
+}
+.xbox.edit .bumper.left::before { content: "<" !important; }
+
+/* ===== TRIGGERS =====
+   Draw neutral bases on wrapper, let actual trigger opacity show press.
+*/
+.xbox.edit .triggers::before,
+.xbox.edit .triggers::after {
+  box-sizing: border-box !important;
+  position: absolute !important;
+  width: 76px !important;
+  height: 76px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 13px !important;
+  border: 2px solid rgba(255,255,255,.28) !important;
+  background: linear-gradient(180deg, rgba(61,64,73,.98), rgba(25,27,33,.98)) !important;
+  box-shadow:
+    0 7px 0 rgba(4,5,8,.98),
+    0 11px 20px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.12) !important;
+  color: rgba(255,255,255,.96) !important;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
+}
+
+/* ▶ = R2 */
+.xbox.edit .triggers::before {
+  content: "▶" !important;
+  left: 715px !important;
+  top: 272px !important;
+}
+
+/* > = L2 */
+.xbox.edit .triggers::after {
+  content: ">" !important;
+  left: 818px !important;
+  top: 182px !important;
+}
+
+.xbox.edit .trigger {
+  box-sizing: border-box !important;
+  position: absolute !important;
+  width: 76px !important;
+  height: 76px !important;
+  border-radius: 13px !important;
+  border: 2px solid rgba(255,255,255,.95) !important;
+  background: linear-gradient(180deg, #f4f5f7, #b7bbc3) !important;
+  background-image: none !important;
+  box-shadow:
+    0 2px 0 rgba(4,5,8,.98),
+    0 5px 15px rgba(0,0,0,.35),
+    0 0 26px rgba(255,255,255,.25),
+    inset 0 1px 0 #fff !important;
+  float: none !important;
+  transform: none !important;
+}
+.xbox.edit .trigger::before {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #11141a !important;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+}
+
+.xbox.edit .trigger.right {
+  left: 715px !important;
+  top: 272px !important;
+}
+.xbox.edit .trigger.right::before { content: "▶" !important; }
+
+.xbox.edit .trigger.left {
+  left: 818px !important;
+  top: 182px !important;
+}
+.xbox.edit .trigger.left::before { content: ">" !important; }
+
+/* ===== STICK CLICKS ===== */
+.xbox.edit .stick {
+  width: 132px !important;
+  height: 68px !important;
+  border-radius: 14px !important;
+  transform: none !important;
+}
+
+/* TAB = L3 */
+.xbox.edit .stick.left {
+  left: 350px !important;
+  top: 352px !important;
+}
+.xbox.edit .stick.left::before {
+  content: "TAB" !important;
+  font-size: 25px !important;
+}
+
+/* CAPS = R3 */
+.xbox.edit .stick.right {
+  left: 510px !important;
+  top: 352px !important;
+}
+.xbox.edit .stick.right::before {
+  content: "CAPS" !important;
+  font-size: 25px !important;
+}
+
+/* ALT = no input, static */
+.controller.xbox.edit::after {
+  content: "ALT" !important;
+  box-sizing: border-box !important;
+  position: absolute !important;
+  left: 612px !important;
+  top: 272px !important;
+  width: 76px !important;
+  height: 76px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 13px !important;
+  border: 2px solid rgba(255,255,255,.28) !important;
+  background: linear-gradient(180deg, rgba(61,64,73,.98), rgba(25,27,33,.98)) !important;
+  box-shadow:
+    0 7px 0 rgba(4,5,8,.98),
+    0 11px 20px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.12) !important;
+  color: rgba(255,255,255,.55) !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
+}
