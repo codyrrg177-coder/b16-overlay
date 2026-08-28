@@ -122,11 +122,11 @@ html, body {
 
 /* W */
 .xbox.edit .face.up {
-  left: 400px !important;
-  top: 600px !important;
+  left: 800px !important;
+  top: 200px !important;
   width: 105px !important;
   height: 101px !important;
-  transform: rotate(15deg) !important;
+  transform: rotate(45deg) !important;
 }
 
 /* A */
