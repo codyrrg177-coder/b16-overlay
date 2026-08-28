@@ -505,3 +505,112 @@ html, body {
   transform: rotate(-8deg) !important;
 }
 
+
+/* ============================================================
+   B16 INPUT-LIGHT + F POSITION FIX
+   Append this to the VERY END of b16.css
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   F POSITION
+   F is a clone of D-pad Up, so its position is relative to W.
+   This places it cleanly above the ◀ key.
+   ------------------------------------------------------------ */
+.xbox.edit .face.up::after {
+  left: 405px !important;   /* absolute x ≈ 610 */
+  top: 18px !important;     /* absolute y ≈ 100 */
+  transform: rotate(-8deg) !important;
+}
+
+/* ------------------------------------------------------------
+   FORCE PRESSED STATES FOR DIGITAL BUTTONS
+   ------------------------------------------------------------ */
+.xbox.edit .face.pressed,
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.pressed {
+  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow:
+    0 2px 0 #07080b,
+    0 5px 12px rgba(0,0,0,.30),
+    0 0 28px rgba(255,255,255,.38),
+    inset 0 1px 0 #fff !important;
+}
+
+.xbox.edit .face.pressed::before,
+.xbox.edit .button.pressed::before,
+.xbox.edit .bumper.pressed::before,
+.xbox.edit .stick.pressed::before {
+  color: #11141a !important;
+  text-shadow: none !important;
+}
+
+/* W + F share D-pad Up, so they MUST illuminate together */
+.xbox.edit .face.up.pressed::after {
+  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
+  border-color: #ffffff !important;
+  color: #11141a !important;
+  text-shadow: none !important;
+  box-shadow:
+    0 2px 0 #07080b,
+    0 5px 12px rgba(0,0,0,.30),
+    0 0 28px rgba(255,255,255,.38),
+    inset 0 1px 0 #fff !important;
+}
+
+/* E + Q share R1, so they MUST illuminate together */
+.xbox.edit .bumper.right.pressed::after {
+  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
+  border-color: #ffffff !important;
+  color: #11141a !important;
+  text-shadow: none !important;
+  box-shadow:
+    0 2px 0 #07080b,
+    0 5px 12px rgba(0,0,0,.30),
+    0 0 28px rgba(255,255,255,.38),
+    inset 0 1px 0 #fff !important;
+}
+
+/* ------------------------------------------------------------
+   TRIGGERS
+   GPV commonly drives trigger strength with inline opacity,
+   so keep the active overlays obvious whenever visible.
+   ------------------------------------------------------------ */
+.xbox.edit .trigger {
+  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
+  border-color: #ffffff !important;
+  color: #11141a !important;
+  box-shadow:
+    0 2px 0 #07080b,
+    0 5px 12px rgba(0,0,0,.30),
+    0 0 28px rgba(255,255,255,.38),
+    inset 0 1px 0 #fff !important;
+}
+
+/* Make trigger labels dark when the active overlay appears */
+.xbox.edit .trigger::before {
+  color: #11141a !important;
+  text-shadow: none !important;
+}
+
+/* ------------------------------------------------------------
+   STICK CLICKS
+   Extra specificity for TAB=L3 / CAPS=R3
+   ------------------------------------------------------------ */
+.xbox.edit .stick.left.pressed,
+.xbox.edit .stick.right.pressed {
+  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow:
+    0 2px 0 #07080b,
+    0 5px 12px rgba(0,0,0,.30),
+    0 0 28px rgba(255,255,255,.38),
+    inset 0 1px 0 #fff !important;
+}
+
+.xbox.edit .stick.left.pressed::before,
+.xbox.edit .stick.right.pressed::before {
+  color: #11141a !important;
+  text-shadow: none !important;
+}
