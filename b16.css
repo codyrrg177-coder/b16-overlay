@@ -546,3 +546,168 @@ html, body {
 .xbox.edit .trigger {
   transform: none !important;
 }
+
+/* ============================================================
+   B16 OVERLAY ALIGNMENT FIX
+   Append this to the VERY END of your current b16.css.
+   This does NOT change the background or artwork.
+   It only fixes the invisible GamePad Viewer overlay positions.
+   ============================================================ */
+
+/* The controller artwork is 1584×784.
+   Make every GPV coordinate layer use that exact same canvas. */
+.xbox.edit .dpad,
+.xbox.edit .abxy,
+.xbox.edit .bumpers,
+.xbox.edit .triggers,
+.xbox.edit .sticks {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* ---------------- WASD ---------------- */
+.xbox.edit .face.up {
+  left: 24.968% !important;
+  top: 29.386% !important;
+  width: 8.209% !important;
+  height: 15.730% !important;
+  transform: none !important;
+}
+
+.xbox.edit .face.left {
+  left: 14.878% !important;
+  top: 41.314% !important;
+  width: 8.551% !important;
+  height: 17.113% !important;
+  transform: none !important;
+}
+
+.xbox.edit .face.down {
+  left: 23.814% !important;
+  top: 45.722% !important;
+  width: 8.038% !important;
+  height: 16.768% !important;
+  bottom: auto !important;
+  transform: none !important;
+}
+
+.xbox.edit .face.right {
+  left: 32.065% !important;
+  top: 48.315% !important;
+  width: 8.337% !important;
+  height: 16.681% !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+/* F shares W / D-pad Up.
+   Position the clone exactly over the printed F key. */
+.xbox.edit .face.up::after {
+  left: 435.17% !important;
+  top: -22.00% !important;
+  width: 83.33% !important;
+  height: 92.31% !important;
+}
+
+/* ---------------- RIGHT SIDE ---------------- */
+
+/* E = R1 */
+.xbox.edit .bumper.right {
+  left: 52.373% !important;
+  top: 35.955% !important;
+  width: 7.268% !important;
+  height: 14.866% !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+/* Q shares E / R1 */
+.xbox.edit .bumper.right::after {
+  left: 321.97% !important;
+  top: -102.35% !important;
+  width: 98.82% !important;
+  height: 96.51% !important;
+}
+
+/* ▲ */
+.xbox.edit .button.y {
+  left: 68.619% !important;
+  top: 20.657% !important;
+  width: 7.054% !important;
+  height: 14.520% !important;
+  transform: none !important;
+}
+
+/* ◀ */
+.xbox.edit .button.a {
+  left: 60.881% !important;
+  top: 42.783% !important;
+  width: 6.926% !important;
+  height: 14.780% !important;
+  transform: none !important;
+}
+
+/* ▼ */
+.xbox.edit .button.b {
+  left: 68.619% !important;
+  top: 37.684% !important;
+  width: 6.926% !important;
+  height: 14.434% !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+/* < */
+.xbox.edit .bumper.left {
+  left: 84.481% !important;
+  top: 26.016% !important;
+  width: 6.798% !important;
+  height: 14.175% !important;
+  transform: none !important;
+}
+
+/* ▶ = R2 */
+.xbox.edit .trigger.right {
+  left: 75.887% !important;
+  top: 37.684% !important;
+  width: 6.883% !important;
+  height: 14.347% !important;
+  transform: none !important;
+}
+
+/* > = L2 */
+.xbox.edit .trigger.left {
+  left: 84.438% !important;
+  top: 42.869% !important;
+  width: 6.969% !important;
+  height: 14.693% !important;
+  transform: none !important;
+}
+
+/* ---------------- BOTTOM ---------------- */
+
+/* TAB = L3 */
+.xbox.edit .stick.left {
+  left: 33.390% !important;
+  top: 75.886% !important;
+  width: 15.648% !important;
+  height: 17.632% !important;
+  transform: none !important;
+}
+
+/* CAPS = R3 */
+.xbox.edit .stick.right {
+  left: 52.373% !important;
+  top: 75.972% !important;
+  width: 16.118% !important;
+  height: 17.805% !important;
+  transform: none !important;
+}
+
+/* ALT remains artwork-only because it has no GPV input. */
