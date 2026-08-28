@@ -764,3 +764,272 @@ html, body {
 
 /* F and Q are pseudo-elements attached to W/E, so they move left
    automatically with their parent overlays. */
+
+/* ============================================================
+   B16 PRECISION OVERLAY ALIGNMENT — FINAL PASS
+   Append this to the VERY END of b16.css.
+
+   Based on the actual 198x98 artwork geometry.
+   Does NOT move or alter the background image.
+   Uses centre-based positioning so rotations stay aligned.
+   ============================================================ */
+
+/* Full-board coordinate layers */
+.xbox.edit .dpad,
+.xbox.edit .abxy,
+.xbox.edit .bumpers,
+.xbox.edit .triggers,
+.xbox.edit .sticks {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+}
+
+/* -------------------- WASD -------------------- */
+.xbox.edit .face.up {
+  left: 28.337% !important;
+  top: 38.462% !important;
+  width: 6.327% !important;
+  height: 12.273% !important;
+  transform: translate(-50%, -50%) rotate(10.8deg) !important;
+  transform-origin: center center !important;
+}
+
+.xbox.edit .face.left {
+  left: 18.910% !important;
+  top: 48.937% !important;
+  width: 6.156% !important;
+  height: 12.273% !important;
+  transform: translate(-50%, -50%) rotate(11deg) !important;
+  transform-origin: center center !important;
+}
+
+.xbox.edit .face.down {
+  left: 27.148% !important;
+  top: 52.800% !important;
+  width: 6.071% !important;
+  height: 12.100% !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) rotate(10.8deg) !important;
+  transform-origin: center center !important;
+}
+
+.xbox.edit .face.right {
+  left: 35.596% !important;
+  top: 56.197% !important;
+  width: 6.156% !important;
+  height: 12.100% !important;
+  right: auto !important;
+  transform: translate(-50%, -50%) rotate(11.3deg) !important;
+  transform-origin: center center !important;
+}
+
+/* -------------------- E / F / Q -------------------- */
+
+/* E = R1 */
+.xbox.edit .bumper.right {
+  display: block !important;
+  left: 54.853% !important;
+  top: 43.129% !important;
+  width: 5.472% !important;
+  height: 11.063% !important;
+  right: auto !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* F uses the otherwise-unused Xbox X overlay.
+   It lights whenever W / D-pad Up is pressed. */
+.xbox.edit .button.x {
+  display: block !important;
+  left: 66.246% !important;
+  top: 33.232% !important;
+  width: 5.985% !important;
+  height: 12.100% !important;
+  transform: translate(-50%, -50%) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.xbox.edit .button.x::before,
+.xbox.edit .button.x::after {
+  content: none !important;
+  display: none !important;
+}
+
+.controller.xbox.edit:has(.face.up.pressed) .button.x {
+  background: rgba(255,255,255,.06) !important;
+  box-shadow:
+    0 0 10px rgba(195,90,255,.95),
+    0 0 24px rgba(155,20,255,.72),
+    0 0 38px rgba(135,0,255,.40),
+    inset 0 0 14px rgba(215,145,255,.16) !important;
+  filter: brightness(1.35) saturate(1.2) !important;
+}
+
+/* Disable the old F pseudo-element completely */
+.xbox.edit .face.up::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Q shares E / R1; keep its overlay precisely on the printed Q key */
+.xbox.edit .bumper.right::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  box-sizing: border-box !important;
+
+  /* Q centre relative to E's top-left coordinate system */
+  left: 472.00% !important;
+  top: -68.40% !important;
+  width: 109.37% !important;
+  height: 109.37% !important;
+
+  transform: translate(-50%, -50%) !important;
+  transform-origin: center center !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+.xbox.edit .bumper.right.pressed::after {
+  background: rgba(255,255,255,.06) !important;
+  box-shadow:
+    0 0 10px rgba(195,90,255,.95),
+    0 0 24px rgba(155,20,255,.72),
+    0 0 38px rgba(135,0,255,.40),
+    inset 0 0 14px rgba(215,145,255,.16) !important;
+}
+
+/* -------------------- MAIN RIGHT GRID -------------------- */
+
+/* ▲ = Triangle / Xbox Y */
+.xbox.edit .button.y {
+  display: block !important;
+  left: 74.797% !important;
+  top: 28.868% !important;
+  width: 5.985% !important;
+  height: 12.100% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* ◀ = Cross / Xbox A */
+.xbox.edit .button.a {
+  display: block !important;
+  left: 66.460% !important;
+  top: 45.765% !important;
+  width: 5.985% !important;
+  height: 12.100% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* ▼ = Circle / Xbox B */
+.xbox.edit .button.b {
+  display: block !important;
+  left: 74.797% !important;
+  top: 43.215% !important;
+  width: 5.985% !important;
+  height: 12.100% !important;
+  right: auto !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* < = L1 */
+.xbox.edit .bumper.left {
+  display: block !important;
+  left: 90.381% !important;
+  top: 34.313% !important;
+  width: 5.985% !important;
+  height: 12.100% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* ▶ = R2 */
+.xbox.edit .trigger.right {
+  left: 83.134% !important;
+  top: 44.036% !important;
+  width: 5.985% !important;
+  height: 12.100% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* > = L2 */
+.xbox.edit .trigger.left {
+  left: 90.381% !important;
+  top: 46.819% !important;
+  width: 5.985% !important;
+  height: 12.100% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* -------------------- BOTTOM KEYS -------------------- */
+
+/* TAB = L3 */
+.xbox.edit .stick.left {
+  left: 40.338% !important;
+  top: 84.745% !important;
+  width: 14.579% !important;
+  height: 14.952% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* CAPS = R3 */
+.xbox.edit .stick.right {
+  left: 62.206% !important;
+  top: 84.745% !important;
+  width: 14.579% !important;
+  height: 14.952% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* ALT has no gamepad input and remains artwork-only. */
+
+/* -------------------- GLOW STYLE -------------------- */
+/* Keep the overlay transparent when idle. */
+.xbox.edit .face,
+.xbox.edit .button,
+.xbox.edit .bumper,
+.xbox.edit .stick {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Red left-side press glow */
+.xbox.edit .face.pressed,
+.xbox.edit .stick.left.pressed {
+  background: rgba(255,255,255,.04) !important;
+  box-shadow:
+    0 0 9px rgba(255,45,55,.95),
+    0 0 22px rgba(255,0,20,.70),
+    inset 0 0 12px rgba(255,90,95,.14) !important;
+  filter: brightness(1.3) saturate(1.2) !important;
+}
+
+/* Purple right-side press glow */
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.right.pressed,
+.xbox.edit .trigger {
+  background: rgba(255,255,255,.04) !important;
+  border: 0 !important;
+  box-shadow:
+    0 0 9px rgba(195,90,255,.95),
+    0 0 22px rgba(155,20,255,.70),
+    inset 0 0 12px rgba(215,145,255,.14) !important;
+  filter: brightness(1.3) saturate(1.2) !important;
+}
+
+/* Prevent any old press transform from moving the overlay */
+.xbox.edit .face.pressed,
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.pressed,
+.xbox.edit .trigger {
+  transform-origin: center center !important;
+}
