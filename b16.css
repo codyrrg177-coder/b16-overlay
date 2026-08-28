@@ -432,3 +432,97 @@ body {
 .gamepad {
   overflow: visible !important;
 }
+
+/* === B16 LAYOUT CLEANUP v4 ===
+   Append to the END of b16.css.
+   This overrides the earlier coordinates.
+*/
+
+/* Slightly wider / lower B16-like plate */
+.controller.xbox.edit {
+  width: 1040px !important;
+  height: 430px !important;
+}
+
+.xbox.edit .dpad,
+.xbox.edit .abxy,
+.xbox.edit .bumpers,
+.xbox.edit .triggers,
+.xbox.edit .sticks {
+  width: 1040px !important;
+  height: 430px !important;
+}
+
+/* WASD: keep the existing tilt and W directly over S */
+.xbox.edit .face.up    { left: 205px !important; top: 78px !important; }
+.xbox.edit .face.left  { left: 102px !important; top: 168px !important; }
+.xbox.edit .face.down  { left: 205px !important; top: 168px !important; }
+.xbox.edit .face.right { left: 308px !important; top: 168px !important; }
+
+/* E */
+.xbox.edit .bumper.right {
+  left: 505px !important;
+  top: 168px !important;
+}
+
+/* Q duplicate of R1: move above-right */
+.xbox.edit .bumper.right::after {
+  left: 205px !important;
+  top: -90px !important;
+}
+
+/* F duplicate of D-pad Up: place left of main action diamond */
+.xbox.edit .face.up::after {
+  left: 390px !important;
+  top: 85px !important;
+}
+
+/* Main action cluster */
+.xbox.edit .button.y {
+  left: 710px !important;
+  top: 78px !important;
+}
+.xbox.edit .button.x {
+  left: 607px !important;
+  top: 168px !important;
+}
+.xbox.edit .button.b {
+  left: 710px !important;
+  top: 168px !important;
+}
+
+/* < = L1, top-right */
+.xbox.edit .bumper.left {
+  left: 813px !important;
+  top: 78px !important;
+}
+
+/* > = L2, right-middle */
+.xbox.edit .triggers::after,
+.xbox.edit .trigger.left {
+  left: 813px !important;
+  top: 168px !important;
+}
+
+/* ▶ = R2, lower-right */
+.xbox.edit .triggers::before,
+.xbox.edit .trigger.right {
+  left: 710px !important;
+  top: 258px !important;
+}
+
+/* ALT = static, lower-left of ▶ */
+.controller.xbox.edit::after {
+  left: 607px !important;
+  top: 258px !important;
+}
+
+/* TAB / CAPS */
+.xbox.edit .stick.left {
+  left: 365px !important;
+  top: 335px !important;
+}
+.xbox.edit .stick.right {
+  left: 525px !important;
+  top: 335px !important;
+}
