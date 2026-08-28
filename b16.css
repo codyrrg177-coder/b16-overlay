@@ -424,3 +424,125 @@ html, body {
         0 0 30px rgba(155,20,255,.80) !important;
     filter: brightness(1.55) !important;
 }
+
+/* ============================================================
+   B16 GLOW-IN-PLACE FIX
+   Append this to the VERY END of your current b16.css.
+   Keeps every current button position unchanged.
+   Removes floating-square press overlays and replaces them with
+   soft in-place glows that sit directly over the printed artwork.
+   ============================================================ */
+
+/* DIGITAL BUTTONS — NO VISIBLE FILL BOX */
+.xbox.edit .face.pressed,
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.pressed {
+  background: rgba(255,255,255,0.06) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow:
+    0 0 10px rgba(255,255,255,.65),
+    0 0 22px rgba(255,255,255,.42),
+    inset 0 0 16px rgba(255,255,255,.10) !important;
+  filter: brightness(1.32) saturate(1.18) !important;
+}
+
+/* LEFT SIDE — RED GLOW */
+.xbox.edit .face.pressed,
+.xbox.edit .stick.left.pressed {
+  box-shadow:
+    0 0 10px rgba(255,45,55,.95),
+    0 0 24px rgba(255,0,20,.72),
+    0 0 38px rgba(255,0,20,.40),
+    inset 0 0 14px rgba(255,90,95,.16) !important;
+  filter: brightness(1.38) saturate(1.28) !important;
+}
+
+/* RIGHT SIDE — PURPLE GLOW */
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.right.pressed {
+  box-shadow:
+    0 0 10px rgba(195,90,255,.95),
+    0 0 24px rgba(155,20,255,.72),
+    0 0 38px rgba(135,0,255,.40),
+    inset 0 0 14px rgba(215,145,255,.16) !important;
+  filter: brightness(1.38) saturate(1.28) !important;
+}
+
+/* F shares W / D-pad Up.
+   Remove any visible filled clone and use glow only. */
+.xbox.edit .face.up::after {
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.xbox.edit .face.up.pressed::after {
+  background: rgba(255,255,255,.04) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow:
+    0 0 10px rgba(195,90,255,.95),
+    0 0 24px rgba(155,20,255,.72),
+    0 0 38px rgba(135,0,255,.40),
+    inset 0 0 14px rgba(215,145,255,.16) !important;
+  filter: brightness(1.38) saturate(1.28) !important;
+}
+
+/* Q shares E / R1.
+   Same glow-only treatment. */
+.xbox.edit .bumper.right::after {
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.xbox.edit .bumper.right.pressed::after {
+  background: rgba(255,255,255,.04) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow:
+    0 0 10px rgba(195,90,255,.95),
+    0 0 24px rgba(155,20,255,.72),
+    0 0 38px rgba(135,0,255,.40),
+    inset 0 0 14px rgba(215,145,255,.16) !important;
+  filter: brightness(1.38) saturate(1.28) !important;
+}
+
+/* ANALOG TRIGGERS — remove the opaque floating squares.
+   GPV changes trigger opacity inline, so leave only a transparent
+   glow layer at the exact existing trigger coordinates. */
+.xbox.edit .trigger {
+  background: rgba(255,255,255,.02) !important;
+  background-image: none !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow:
+    0 0 10px rgba(195,90,255,.90),
+    0 0 22px rgba(155,20,255,.60),
+    inset 0 0 12px rgba(215,145,255,.12) !important;
+  filter: brightness(1.28) saturate(1.18) !important;
+}
+
+/* Make sure no inherited generated labels/blocks become visible */
+.xbox.edit .trigger::before,
+.xbox.edit .trigger::after,
+.xbox.edit .face::before,
+.xbox.edit .button::before,
+.xbox.edit .bumper::before,
+.xbox.edit .stick::before {
+  text-shadow: none !important;
+}
+
+/* Prevent press animation from nudging the overlays out of place */
+.xbox.edit .face.pressed,
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.pressed,
+.xbox.edit .trigger {
+  transform: none !important;
+}
