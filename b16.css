@@ -737,3 +737,30 @@ html, body {
   left: 935px !important;
   top: 195px !important;
 }
+
+/* B16 WASD TIGHTER SPACING PATCH
+   Append to the VERY END of b16.css */
+
+/* W — centered over S and brought downward */
+.xbox.edit .face.up {
+  left: 205px !important;
+  top: 105px !important;
+}
+
+/* A — move toward S */
+.xbox.edit .face.left {
+  left: 125px !important;
+  top: 182px !important;
+}
+
+/* S — anchor */
+.xbox.edit .face.down {
+  left: 205px !important;
+  top: 182px !important;
+}
+
+/* D — move toward S */
+.xbox.edit .face.right {
+  left: 285px !important;
+  top: 182px !important;
+}
