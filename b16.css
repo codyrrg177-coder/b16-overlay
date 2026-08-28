@@ -1519,3 +1519,37 @@ html, body {
         0 0 45px rgba(125,0,255,.55) !important;
     filter: brightness(1.65) saturate(1.45) !important;
 }
+/* B16 — EXTRA GLOW ONLY FOR E, ▲, ◀, ▼, <
+   Append to the VERY END of b16.css.
+   Does NOT change any positions, sizes, or rotations. */
+
+/* E = R1 */
+.xbox.edit .bumper.right.pressed,
+
+/* ▲ = Y / Triangle */
+.xbox.edit .button.y.pressed,
+
+/* ◀ = A / Cross */
+.xbox.edit .button.a.pressed,
+
+/* ▼ = B / Circle */
+.xbox.edit .button.b.pressed,
+
+/* < = L1 */
+.xbox.edit .bumper.left.pressed {
+    background: rgba(205, 90, 255, .38) !important;
+
+    box-shadow:
+        inset 0 0 9px rgba(255,255,255,.98),
+        inset 0 0 20px rgba(235,170,255,.78),
+        inset 0 0 34px rgba(195,75,255,.52),
+
+        0 0 6px rgba(255,245,255,1),
+        0 0 13px rgba(240,195,255,1),
+        0 0 22px rgba(220,125,255,1),
+        0 0 34px rgba(190,60,255,1),
+        0 0 50px rgba(155,20,255,.95),
+        0 0 70px rgba(125,0,255,.72) !important;
+
+    filter: brightness(2.45) saturate(1.65) !important;
+}
