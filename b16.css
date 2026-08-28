@@ -1447,3 +1447,75 @@ html, body {
 }
 
 /* CAPS intentionally not overridden here. */
+/* B16 STRONGER PRESS GLOW
+   Append to the VERY END of b16.css.
+   POSITIONING IS NOT TOUCHED. */
+
+/* RED: WASD + TAB */
+.xbox.edit .face.pressed,
+.xbox.edit .stick.left.pressed {
+    background: rgba(255, 35, 45, .16) !important;
+    box-shadow:
+        inset 0 0 16px rgba(255,255,255,.42),
+        inset 0 0 28px rgba(255,25,35,.28),
+        0 0 8px rgba(255,90,95,1),
+        0 0 18px rgba(255,20,30,1),
+        0 0 32px rgba(255,0,20,.90),
+        0 0 48px rgba(255,0,20,.62) !important;
+    filter: brightness(1.65) saturate(1.45) !important;
+}
+
+/* PURPLE: all normal purple digital keys + CAPS */
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.right.pressed {
+    background: rgba(175, 45, 255, .16) !important;
+    box-shadow:
+        inset 0 0 16px rgba(255,255,255,.42),
+        inset 0 0 28px rgba(185,60,255,.28),
+        0 0 8px rgba(225,145,255,1),
+        0 0 18px rgba(190,70,255,1),
+        0 0 32px rgba(150,20,255,.90),
+        0 0 48px rgba(125,0,255,.62) !important;
+    filter: brightness(1.65) saturate(1.45) !important;
+}
+
+/* Q duplicate glow */
+.xbox.edit .bumper.right.pressed::after {
+    background: rgba(175,45,255,.16) !important;
+    box-shadow:
+        inset 0 0 16px rgba(255,255,255,.42),
+        inset 0 0 28px rgba(185,60,255,.28),
+        0 0 8px rgba(225,145,255,1),
+        0 0 18px rgba(190,70,255,1),
+        0 0 32px rgba(150,20,255,.90),
+        0 0 48px rgba(125,0,255,.62) !important;
+    filter: brightness(1.65) saturate(1.45) !important;
+}
+
+/* F duplicate glow — follows W, with NO positioning changes */
+.controller.xbox.edit:has(.face.up.pressed) .button.x {
+    background: rgba(175,45,255,.16) !important;
+    box-shadow:
+        inset 0 0 16px rgba(255,255,255,.42),
+        inset 0 0 28px rgba(185,60,255,.28),
+        0 0 8px rgba(225,145,255,1),
+        0 0 18px rgba(190,70,255,1),
+        0 0 32px rgba(150,20,255,.90),
+        0 0 48px rgba(125,0,255,.62) !important;
+    filter: brightness(1.65) saturate(1.45) !important;
+}
+
+/* Analog trigger overlays: stronger illumination while GPV fades them in.
+   No left/top/width/height/transform declarations here. */
+.xbox.edit .trigger {
+    background: rgba(175,45,255,.13) !important;
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,.38),
+        inset 0 0 26px rgba(185,60,255,.24),
+        0 0 8px rgba(225,145,255,.95),
+        0 0 18px rgba(190,70,255,.95),
+        0 0 31px rgba(150,20,255,.82),
+        0 0 45px rgba(125,0,255,.55) !important;
+    filter: brightness(1.58) saturate(1.40) !important;
+}
