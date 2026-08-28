@@ -614,3 +614,126 @@ html, body {
   color: #11141a !important;
   text-shadow: none !important;
 }
+
+/* ============================================================
+   B16 FIX v6
+   Append this to the VERY END of b16.css
+
+   Fixes:
+   1) ◀ now uses Xbox A / Cross, so it actually lights.
+   2) F uses the otherwise-unused Xbox X visual slot, positioned
+      cleanly above ◀, but its pressed look follows D-pad Up (W).
+   3) > / L2 trigger gets a much stronger pressed-state look.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   F: stop using the old W pseudo-element clone completely
+   ------------------------------------------------------------ */
+.xbox.edit .face.up::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Re-purpose the unused Xbox X visual as the F key */
+.xbox.edit .button.x {
+  display: block !important;
+  position: absolute !important;
+  left: 610px !important;
+  top: 90px !important;
+  width: 76px !important;
+  height: 76px !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+
+.xbox.edit .button.x::before {
+  content: "F" !important;
+  transform: none !important;
+}
+
+/* Keep F visually neutral even if Xbox-X itself somehow fires */
+.xbox.edit .button.x.pressed {
+  background: linear-gradient(180deg, #3a3d45 0%, #1a1c21 100%) !important;
+  border-color: rgba(255,255,255,.22) !important;
+  box-shadow:
+    0 7px 0 #07080b,
+    0 10px 17px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.11) !important;
+}
+.xbox.edit .button.x.pressed::before {
+  color: #fff !important;
+  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
+}
+
+/* F lights when W / D-pad Up is pressed */
+.controller.xbox.edit:has(.face.up.pressed) .button.x {
+  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow:
+    0 2px 0 #07080b,
+    0 5px 12px rgba(0,0,0,.30),
+    0 0 28px rgba(255,255,255,.38),
+    inset 0 1px 0 #fff !important;
+}
+.controller.xbox.edit:has(.face.up.pressed) .button.x::before {
+  color: #11141a !important;
+  text-shadow: none !important;
+}
+
+/* ------------------------------------------------------------
+   ◀: Cross/X on PlayStation = Xbox A
+   This is the element that should react to your physical ◀ key.
+   ------------------------------------------------------------ */
+.xbox.edit .button.a {
+  display: block !important;
+  position: absolute !important;
+  left: 610px !important;
+  top: 195px !important;
+  width: 76px !important;
+  height: 76px !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+.xbox.edit .button.a::before {
+  content: "◀" !important;
+  transform: none !important;
+}
+
+/* F is now using button.x, so remove the old ◀ label/rule from X */
+.xbox.edit .button.x::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* ------------------------------------------------------------
+   > = L2
+   Make the active analog-trigger overlay much more obvious.
+   ------------------------------------------------------------ */
+.xbox.edit .trigger.left {
+  left: 935px !important;
+  top: 195px !important;
+  width: 76px !important;
+  height: 76px !important;
+  border: 3px solid #fff !important;
+  background: #fff !important;
+  background-image: none !important;
+  box-shadow:
+    0 2px 0 #07080b,
+    0 5px 12px rgba(0,0,0,.30),
+    0 0 34px rgba(255,255,255,.60),
+    inset 0 0 0 2px rgba(255,255,255,.95) !important;
+  filter: brightness(1.15) contrast(1.08) !important;
+}
+
+.xbox.edit .trigger.left::before {
+  content: ">" !important;
+  color: #0c0e12 !important;
+  text-shadow: none !important;
+  font-weight: 900 !important;
+}
+
+/* Keep the neutral > base in exactly the same position */
+.xbox.edit .triggers::after {
+  left: 935px !important;
+  top: 195px !important;
+}
