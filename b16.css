@@ -526,3 +526,166 @@ body {
   left: 525px !important;
   top: 335px !important;
 }
+
+/* ==========================================================
+   Haute42 B16 – MASTER REFERENCE POSITION PATCH
+   Paste this at the VERY END of your existing b16.css.
+   Designed to match the user's approved reference layout.
+   ========================================================== */
+
+/* Keep the working centered plate */
+.controller.xbox.edit {
+  width: 1040px !important;
+  height: 500px !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  margin: 0 !important;
+  transform: translate(-50%, -50%) !important;
+  transform-origin: center center !important;
+}
+
+/* Make coordinate-bearing layers fill the plate */
+.xbox.edit .dpad,
+.xbox.edit .abxy,
+.xbox.edit .bumpers,
+.xbox.edit .triggers,
+.xbox.edit .sticks {
+  width: 1040px !important;
+  height: 500px !important;
+}
+
+/* ---------- LEFT: tilted WASD ---------- */
+/* W directly above S */
+.xbox.edit .face.up {
+  left: 205px !important;
+  top: 72px !important;
+  transform: rotate(10deg) !important;
+}
+.xbox.edit .face.left {
+  left: 92px !important;
+  top: 178px !important;
+  transform: rotate(14deg) !important;
+}
+.xbox.edit .face.down {
+  left: 205px !important;
+  top: 178px !important;
+  transform: rotate(10deg) !important;
+}
+.xbox.edit .face.right {
+  left: 318px !important;
+  top: 196px !important;
+  transform: rotate(14deg) !important;
+}
+
+/* ---------- CENTRE: E ---------- */
+.xbox.edit .bumper.right {
+  left: 510px !important;
+  top: 174px !important;
+}
+
+/* ---------- RIGHT: exact approved reference geometry ---------- */
+/*
+       F      ▲      Q       <
+              (top row)
+
+              ◀      ▼       ▶       >
+
+              ALT
+*/
+
+/* F */
+.xbox.edit .face.up::after {
+  content: "F" !important;
+  left: 430px !important;
+  top: 18px !important;
+  transform: none !important;
+}
+
+/* ▲ */
+.xbox.edit .button.y {
+  left: 690px !important;
+  top: 64px !important;
+}
+.xbox.edit .button.y::after {
+  content: "▲" !important;
+}
+
+/* Q */
+.xbox.edit .bumper.right::after {
+  content: "Q" !important;
+  left: 230px !important;
+  top: -110px !important;
+  transform: none !important;
+}
+
+/* < */
+.xbox.edit .bumper.left {
+  left: 900px !important;
+  top: 88px !important;
+}
+
+/* ◀ */
+.xbox.edit .button.x {
+  left: 585px !important;
+  top: 185px !important;
+}
+.xbox.edit .button.x::after {
+  content: "◀" !important;
+}
+
+/* ▼ */
+.xbox.edit .button.a {
+  left: 690px !important;
+  top: 185px !important;
+}
+.xbox.edit .button.a::after {
+  content: "▼" !important;
+}
+
+/* ▶ */
+.xbox.edit .button.b {
+  left: 795px !important;
+  top: 185px !important;
+}
+.xbox.edit .button.b::after {
+  content: "▶" !important;
+}
+
+/* > */
+.xbox.edit .trigger.left {
+  left: 900px !important;
+  top: 185px !important;
+}
+
+/* ALT */
+.controller.xbox.edit::after {
+  content: "ALT" !important;
+  left: 585px !important;
+  top: 302px !important;
+}
+
+/* Hide/move any legacy R2 visual that was used as a second play key */
+.xbox.edit .trigger.right {
+  display: none !important;
+}
+
+/* ---------- BOTTOM: TAB / CAPS ---------- */
+.xbox.edit .stick.left {
+  left: 340px !important;
+  top: 390px !important;
+}
+.xbox.edit .stick.right {
+  left: 535px !important;
+  top: 390px !important;
+}
+
+/* Keep the custom board visible */
+body {
+  min-width: 100vw !important;
+  min-height: 100vh !important;
+}
+#gamepads,
+.gamepad {
+  overflow: visible !important;
+}
