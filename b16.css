@@ -689,3 +689,129 @@ body {
 .gamepad {
   overflow: visible !important;
 }
+
+/* ==========================================================
+   B16 RIGHT-CLUSTER FIX v5
+   Paste at the VERY END of b16.css.
+   Leaves plate/WASD/TAB/CAPS alone.
+   Target:
+                F     ▲     Q      <
+          E
+                ◀     ▼     ▶      >
+                ALT
+   ========================================================== */
+
+/* Kill the generated duplicates from earlier patches. */
+.xbox.edit .face.up::after,
+.xbox.edit .bumper.right::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Use real GPV controls only.  Reset transforms so each key
+   uses the board as its visual coordinate system. */
+.xbox.edit .bumper.right,
+.xbox.edit .bumper.left,
+.xbox.edit .trigger.left,
+.xbox.edit .trigger.right,
+.xbox.edit .button,
+.xbox.edit .back,
+.xbox.edit .start {
+  transform: none !important;
+  margin: 0 !important;
+}
+
+/* E */
+.xbox.edit .bumper.right {
+  display: block !important;
+  position: absolute !important;
+  left: 510px !important;
+  top: 174px !important;
+}
+
+/* F — real BACK key */
+.xbox.edit .back {
+  display: block !important;
+  position: absolute !important;
+  left: 620px !important;
+  top: 92px !important;
+}
+.xbox.edit .back::after { content: "F" !important; }
+
+/* ▲ — Y */
+.xbox.edit .button.y {
+  display: block !important;
+  position: absolute !important;
+  left: 725px !important;
+  top: 92px !important;
+}
+.xbox.edit .button.y::after { content: "▲" !important; }
+
+/* Q — real START key */
+.xbox.edit .start {
+  display: block !important;
+  position: absolute !important;
+  left: 830px !important;
+  top: 92px !important;
+}
+.xbox.edit .start::after { content: "Q" !important; }
+
+/* < — L1 */
+.xbox.edit .bumper.left {
+  display: block !important;
+  position: absolute !important;
+  left: 935px !important;
+  top: 92px !important;
+}
+.xbox.edit .bumper.left::after { content: "<" !important; }
+
+/* ◀ — X */
+.xbox.edit .button.x {
+  display: block !important;
+  position: absolute !important;
+  left: 620px !important;
+  top: 197px !important;
+}
+.xbox.edit .button.x::after { content: "◀" !important; }
+
+/* ▼ — A */
+.xbox.edit .button.a {
+  display: block !important;
+  position: absolute !important;
+  left: 725px !important;
+  top: 197px !important;
+}
+.xbox.edit .button.a::after { content: "▼" !important; }
+
+/* ▶ — B */
+.xbox.edit .button.b {
+  display: block !important;
+  position: absolute !important;
+  left: 830px !important;
+  top: 197px !important;
+}
+.xbox.edit .button.b::after { content: "▶" !important; }
+
+/* > — L2 */
+.xbox.edit .trigger.left {
+  display: block !important;
+  position: absolute !important;
+  left: 935px !important;
+  top: 197px !important;
+}
+.xbox.edit .trigger.left::after { content: ">" !important; }
+
+/* ALT — R2 */
+.xbox.edit .trigger.right {
+  display: block !important;
+  position: absolute !important;
+  left: 620px !important;
+  top: 302px !important;
+}
+.xbox.edit .trigger.right::after { content: "ALT" !important; }
+
+/* Remove the old synthetic ALT from the plate. */
+.controller.xbox.edit::after {
+  display: none !important;
+  content: none !important;
+}
