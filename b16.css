@@ -1,13 +1,11 @@
 
 /* ============================================================
-   Haute42 B16 — CLEAN GamePad Viewer stylesheet
-   REPLACE the entire contents of b16.css with this file.
-   Uses the working Xbox + editcss setup.
-   Approved visual layout:
-              F      ▲      Q      <
-       E      ◀      ▼      ▶      >
-              ALT
-   plus tilted WASD and TAB/CAPS.
+   Haute42 B16 — EXACT IMAGE BACKGROUND GAMEPAD VIEWER SKIN
+   Replace the ENTIRE contents of b16.css with this file.
+   Upload b16-bg.png beside b16.css in the repository root.
+
+   The visual is the exact supplied image. GamePad Viewer controls
+   are transparent hit/highlight layers placed over the printed keys.
    ============================================================ */
 
 html, body {
@@ -24,47 +22,43 @@ html, body {
   overflow: visible !important;
 }
 
-/* ---------- BOARD ---------- */
+/* Exact image canvas: 1543 × 1019 */
 .controller.xbox.edit {
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
-  width: 1040px !important;
-  height: 500px !important;
+  width: 1543px !important;
+  height: 1019px !important;
   margin: 0 !important;
   transform: translate(-50%, -50%) !important;
   transform-origin: center center !important;
 
-  background: linear-gradient(180deg, #1d2026 0%, #0d0f13 100%) !important;
-  border: 2px solid rgba(255,255,255,.18) !important;
-  border-radius: 34px !important;
-  box-shadow:
-    0 18px 48px rgba(0,0,0,.40),
-    inset 0 1px 0 rgba(255,255,255,.08),
-    inset 0 0 0 12px rgba(255,255,255,.016) !important;
+  background:
+    url("https://codyrrg177-coder.github.io/b16-overlay/b16-bg.png")
+    center center / 1543px 1019px no-repeat !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   overflow: visible !important;
-  font-family: "Segoe UI", Arial, sans-serif !important;
 }
 
-/* inner border */
-.controller.xbox.edit::before {
-  content: "" !important;
-  position: absolute !important;
-  left: 14px !important;
-  right: 14px !important;
-  top: 14px !important;
-  bottom: 14px !important;
-  border: 1px solid rgba(255,255,255,.075) !important;
-  border-radius: 24px !important;
-  pointer-events: none !important;
-}
-
-/* ---------- RESET STOCK XBOX ART ---------- */
-.xbox.edit .quadrant,
-.xbox.edit .arrows {
+/* Disable old generated plate decoration */
+.controller.xbox.edit::before,
+.controller.xbox.edit::after {
+  content: none !important;
   display: none !important;
 }
 
+/* Hide stock Xbox artwork we do not need */
+.xbox.edit .quadrant,
+.xbox.edit .arrows,
+.xbox.edit .back,
+.xbox.edit .start {
+  display: none !important;
+}
+
+/* Full-canvas coordinate containers */
 .xbox.edit .dpad,
 .xbox.edit .abxy,
 .xbox.edit .bumpers,
@@ -73,694 +67,279 @@ html, body {
   position: absolute !important;
   left: 0 !important;
   top: 0 !important;
-  width: 1040px !important;
-  height: 500px !important;
+  width: 1543px !important;
+  height: 1019px !important;
   margin: 0 !important;
   padding: 0 !important;
+  overflow: visible !important;
 }
 
-/* common keycap */
+/* ------------------------------------------------------------
+   COMMON INVISIBLE CONTROL LAYER
+   The artwork already contains the keys and labels.
+   ------------------------------------------------------------ */
 .xbox.edit .face,
 .xbox.edit .button,
 .xbox.edit .bumper,
 .xbox.edit .stick {
   box-sizing: border-box !important;
   position: absolute !important;
-  width: 76px !important;
-  height: 76px !important;
   margin: 0 !important;
   float: none !important;
-  border: 2px solid rgba(255,255,255,.22) !important;
-  border-radius: 13px !important;
-  background: linear-gradient(180deg, #3a3d45 0%, #1a1c21 100%) !important;
+  background: transparent !important;
   background-image: none !important;
-  box-shadow:
-    0 7px 0 #07080b,
-    0 10px 17px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.11) !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
   opacity: 1 !important;
+  filter: none !important;
 }
 
-/* labels */
+/* Hide GPV's own text/sprites */
 .xbox.edit .face::before,
 .xbox.edit .button::before,
 .xbox.edit .bumper::before,
 .xbox.edit .stick::before {
-  position: absolute !important;
-  inset: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: #fff !important;
-  font: 800 30px/1 "Segoe UI", Arial, sans-serif !important;
-  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
+  content: "" !important;
+  display: none !important;
 }
 
-/* pressed look */
+/* Digital press glow: only overlay the existing printed key */
 .xbox.edit .face.pressed,
 .xbox.edit .button.pressed,
 .xbox.edit .bumper.pressed,
 .xbox.edit .stick.pressed {
-  background: linear-gradient(180deg, #f5f6f8 0%, #b7bbc4 100%) !important;
-  border-color: #fff !important;
+  background: rgba(255,255,255,.28) !important;
   box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 24px rgba(255,255,255,.26),
-    inset 0 1px 0 #fff !important;
-}
-.xbox.edit .face.pressed::before,
-.xbox.edit .button.pressed::before,
-.xbox.edit .bumper.pressed::before,
-.xbox.edit .stick.pressed::before {
-  color: #11141a !important;
-  text-shadow: none !important;
+    inset 0 0 0 3px rgba(255,255,255,.88),
+    0 0 26px rgba(255,255,255,.68) !important;
+  filter: brightness(1.28) !important;
 }
 
 /* ============================================================
-   LEFT — TILTED WASD
+   LEFT — exact printed WASD locations
    ============================================================ */
+
+/* W */
 .xbox.edit .face.up {
-  left: 205px !important;
-  top: 72px !important;
-  transform: rotate(10deg) !important;
-}
-.xbox.edit .face.up::before {
-  content: "W" !important;
-  transform: rotate(-10deg) !important;
+  left: 421px !important;
+  top: 383px !important;
+  width: 105px !important;
+  height: 101px !important;
+  transform: rotate(1deg) !important;
 }
 
+/* A */
 .xbox.edit .face.left {
-  left: 92px !important;
-  top: 178px !important;
-  transform: rotate(14deg) !important;
-}
-.xbox.edit .face.left::before {
-  content: "A" !important;
-  transform: rotate(-14deg) !important;
+  left: 293px !important;
+  top: 495px !important;
+  width: 108px !important;
+  height: 101px !important;
+  transform: rotate(1deg) !important;
 }
 
+/* S */
 .xbox.edit .face.down {
-  left: 205px !important;
-  top: 178px !important;
+  left: 414px !important;
+  top: 501px !important;
+  width: 107px !important;
+  height: 104px !important;
   bottom: auto !important;
-  transform: rotate(10deg) !important;
-}
-.xbox.edit .face.down::before {
-  content: "S" !important;
-  transform: rotate(-10deg) !important;
+  transform: rotate(1deg) !important;
 }
 
+/* D */
 .xbox.edit .face.right {
-  left: 318px !important;
-  top: 196px !important;
+  left: 532px !important;
+  top: 507px !important;
+  width: 105px !important;
+  height: 104px !important;
   right: auto !important;
-  transform: rotate(14deg) !important;
-}
-.xbox.edit .face.right::before {
-  content: "D" !important;
-  transform: rotate(-14deg) !important;
+  transform: rotate(1deg) !important;
 }
 
-/* F = same input as W, clone it beside the action cluster */
+/* F = same input as W.
+   Invisible until W/D-pad-Up is pressed; then glow over the printed F key. */
 .xbox.edit .face.up::after {
-  content: "F" !important;
+  content: "" !important;
   box-sizing: border-box !important;
   position: absolute !important;
-  left: 405px !important;   /* 610 - W x 205 */
-  top: 18px !important;     /* 90 - W y 72 */
-  width: 76px !important;
-  height: 76px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border: 2px solid rgba(255,255,255,.22) !important;
-  border-radius: 13px !important;
-  background: linear-gradient(180deg, #3a3d45 0%, #1a1c21 100%) !important;
-  box-shadow:
-    0 7px 0 #07080b,
-    0 10px 17px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.11) !important;
-  color: #fff !important;
-  font: 800 30px/1 "Segoe UI", Arial, sans-serif !important;
-  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
-  transform: rotate(-10deg) !important;
+
+  /* absolute F x/y = 828/417; relative to W x/y = 421/383 */
+  left: 407px !important;
+  top: 34px !important;
+
+  width: 105px !important;
+  height: 100px !important;
+  border-radius: 14px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
 }
+
 .xbox.edit .face.up.pressed::after {
-  background: linear-gradient(180deg, #f5f6f8 0%, #b7bbc4 100%) !important;
-  border-color: #fff !important;
-  color: #11141a !important;
-  text-shadow: none !important;
+  background: rgba(255,255,255,.28) !important;
   box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 24px rgba(255,255,255,.26),
-    inset 0 1px 0 #fff !important;
+    inset 0 0 0 3px rgba(255,255,255,.88),
+    0 0 26px rgba(255,255,255,.68) !important;
 }
 
 /* ============================================================
-   RIGHT — EXACT APPROVED GEOMETRY
+   CENTRE / RIGHT
    ============================================================ */
 
 /* E = R1 */
 .xbox.edit .bumper.right {
   display: block !important;
-  left: 505px !important;
-  top: 182px !important;
+  left: 695px !important;
+  top: 488px !important;
+  width: 104px !important;
+  height: 99px !important;
   right: auto !important;
   transform: none !important;
-}
-.xbox.edit .bumper.right::before {
-  content: "E" !important;
 }
 
 /* Q = same input as E/R1 */
 .xbox.edit .bumper.right::after {
-  content: "Q" !important;
+  content: "" !important;
   box-sizing: border-box !important;
   position: absolute !important;
-  left: 325px !important;   /* 830 - 505 */
-  top: -92px !important;    /* 90 - 182 */
-  width: 76px !important;
-  height: 76px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border: 2px solid rgba(255,255,255,.22) !important;
-  border-radius: 13px !important;
-  background: linear-gradient(180deg, #3a3d45 0%, #1a1c21 100%) !important;
-  box-shadow:
-    0 7px 0 #07080b,
-    0 10px 17px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.11) !important;
-  color: #fff !important;
-  font: 800 30px/1 "Segoe UI", Arial, sans-serif !important;
-  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
+
+  /* Q absolute x/y = 1083/365; relative to E = 695/488 */
+  left: 388px !important;
+  top: -123px !important;
+
+  width: 105px !important;
+  height: 96px !important;
+  border-radius: 14px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
 }
+
 .xbox.edit .bumper.right.pressed::after {
-  background: linear-gradient(180deg, #f5f6f8 0%, #b7bbc4 100%) !important;
-  border-color: #fff !important;
-  color: #11141a !important;
-  text-shadow: none !important;
+  background: rgba(255,255,255,.28) !important;
   box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 24px rgba(255,255,255,.26),
-    inset 0 1px 0 #fff !important;
+    inset 0 0 0 3px rgba(255,255,255,.88),
+    0 0 26px rgba(255,255,255,.68) !important;
 }
 
 /* ▲ = Y / Triangle */
 .xbox.edit .button.y {
   display: block !important;
-  left: 715px !important;
-  top: 90px !important;
+  left: 958px !important;
+  top: 365px !important;
+  width: 105px !important;
+  height: 96px !important;
   transform: none !important;
-}
-.xbox.edit .button.y::before {
-  content: "▲" !important;
 }
 
-/* ◀ = X */
-.xbox.edit .button.x {
+/* ◀ = physical Cross/X -> Xbox A */
+.xbox.edit .button.a {
   display: block !important;
-  left: 610px !important;
-  top: 195px !important;
+  left: 828px !important;
+  top: 530px !important;
+  width: 105px !important;
+  height: 99px !important;
   transform: none !important;
 }
-.xbox.edit .button.x::before {
-  content: "◀" !important;
+
+/* Keep Xbox X hidden; F is visually handled by W duplicate */
+.xbox.edit .button.x {
+  display: none !important;
 }
 
 /* ▼ = B / Circle */
 .xbox.edit .button.b {
   display: block !important;
-  left: 715px !important;
-  top: 195px !important;
+  left: 958px !important;
+  top: 482px !important;
+  width: 105px !important;
+  height: 96px !important;
   right: auto !important;
   transform: none !important;
-}
-.xbox.edit .button.b::before {
-  content: "▼" !important;
-}
-
-/* Hide unused A face */
-.xbox.edit .button.a {
-  display: none !important;
 }
 
 /* < = L1 */
 .xbox.edit .bumper.left {
   display: block !important;
-  left: 935px !important;
-  top: 90px !important;
+  left: 1213px !important;
+  top: 365px !important;
+  width: 103px !important;
+  height: 96px !important;
   transform: none !important;
-}
-.xbox.edit .bumper.left::before {
-  content: "<" !important;
-}
-
-/* ---------- TRIGGERS ---------- */
-/* neutral bases */
-.xbox.edit .triggers::before,
-.xbox.edit .triggers::after {
-  box-sizing: border-box !important;
-  position: absolute !important;
-  width: 76px !important;
-  height: 76px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border: 2px solid rgba(255,255,255,.22) !important;
-  border-radius: 13px !important;
-  background: linear-gradient(180deg, #3a3d45 0%, #1a1c21 100%) !important;
-  box-shadow:
-    0 7px 0 #07080b,
-    0 10px 17px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.11) !important;
-  color: #fff !important;
-  font: 800 30px/1 "Segoe UI", Arial, sans-serif !important;
-  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
-}
-
-/* ▶ = R2 */
-.xbox.edit .triggers::before {
-  content: "▶" !important;
-  left: 820px !important;
-  top: 195px !important;
-}
-
-/* > = L2 */
-.xbox.edit .triggers::after {
-  content: ">" !important;
-  left: 935px !important;
-  top: 195px !important;
-}
-
-/* active trigger overlays */
-.xbox.edit .trigger {
-  box-sizing: border-box !important;
-  position: absolute !important;
-  width: 76px !important;
-  height: 76px !important;
-  border-radius: 13px !important;
-  border: 2px solid #fff !important;
-  background: linear-gradient(180deg, #f5f6f8 0%, #b7bbc4 100%) !important;
-  background-image: none !important;
-  box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 24px rgba(255,255,255,.26),
-    inset 0 1px 0 #fff !important;
-  transform: none !important;
-}
-.xbox.edit .trigger::before {
-  position: absolute !important;
-  inset: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: #11141a !important;
-  font: 800 30px/1 "Segoe UI", Arial, sans-serif !important;
-}
-
-/* R2 */
-.xbox.edit .trigger.right {
-  left: 820px !important;
-  top: 195px !important;
-}
-.xbox.edit .trigger.right::before {
-  content: "▶" !important;
-}
-
-/* L2 */
-.xbox.edit .trigger.left {
-  left: 935px !important;
-  top: 195px !important;
-}
-.xbox.edit .trigger.left::before {
-  content: ">" !important;
-}
-
-/* ALT = no input, static key */
-.controller.xbox.edit::after {
-  content: "ALT" !important;
-  box-sizing: border-box !important;
-  position: absolute !important;
-  left: 610px !important;
-  top: 305px !important;
-  width: 76px !important;
-  height: 76px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border: 2px solid rgba(255,255,255,.22) !important;
-  border-radius: 13px !important;
-  background: linear-gradient(180deg, #3a3d45 0%, #1a1c21 100%) !important;
-  box-shadow:
-    0 7px 0 #07080b,
-    0 10px 17px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.11) !important;
-  color: rgba(255,255,255,.70) !important;
-  font: 800 22px/1 "Segoe UI", Arial, sans-serif !important;
-  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
 }
 
 /* ============================================================
-   BOTTOM — TAB / CAPS
+   TRIGGERS — R2 = ▶, L2 = >
+   GPV may control trigger opacity inline; the image remains underneath.
    ============================================================ */
+
+/* Remove synthetic neutral trigger bases from older CSS */
+.xbox.edit .triggers::before,
+.xbox.edit .triggers::after {
+  content: none !important;
+  display: none !important;
+}
+
+.xbox.edit .trigger {
+  box-sizing: border-box !important;
+  position: absolute !important;
+  margin: 0 !important;
+  width: 104px !important;
+  height: 96px !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  background: rgba(255,255,255,.34) !important;
+  background-image: none !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(255,255,255,.9),
+    0 0 28px rgba(255,255,255,.72) !important;
+  filter: brightness(1.25) !important;
+  transform: none !important;
+}
+
+/* ▶ = R2 */
+.xbox.edit .trigger.right {
+  left: 1084px !important;
+  top: 482px !important;
+}
+
+/* > = L2 */
+.xbox.edit .trigger.left {
+  left: 1213px !important;
+  top: 482px !important;
+}
+
+/* No extra trigger text; image contains symbols */
+.xbox.edit .trigger::before,
+.xbox.edit .trigger::after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* ============================================================
+   TAB / CAPS = stick clicks
+   ============================================================ */
+
 .xbox.edit .stick {
-  width: 132px !important;
-  height: 68px !important;
+  height: 95px !important;
   border-radius: 14px !important;
   transform: none !important;
 }
 
 /* TAB = L3 */
 .xbox.edit .stick.left {
-  left: 340px !important;
-  top: 395px !important;
-}
-.xbox.edit .stick.left::before {
-  content: "TAB" !important;
-  font-size: 25px !important;
+  left: 526px !important;
+  top: 769px !important;
+  width: 190px !important;
 }
 
 /* CAPS = R3 */
 .xbox.edit .stick.right {
-  left: 535px !important;
-  top: 395px !important;
-}
-.xbox.edit .stick.right::before {
-  content: "CAPS" !important;
-  font-size: 25px !important;
-}
-/* ============================================================
-   B16 FINAL ALIGNMENT PATCH
-   Append this to the VERY END of b16.css
-   - Moves F into the proper top-left slot of the right cluster
-   - Straightens/aligns WASD while preserving the slight B16 tilt
-   ============================================================ */
-
-/* WASD: cleaner alignment */
-.xbox.edit .face.up {
-  left: 205px !important;
-  top: 82px !important;
-  transform: rotate(8deg) !important;
-}
-.xbox.edit .face.up::before {
-  transform: rotate(-8deg) !important;
+  left: 752px !important;
+  top: 769px !important;
+  width: 210px !important;
 }
 
-.xbox.edit .face.left {
-  left: 100px !important;
-  top: 182px !important;
-  transform: rotate(8deg) !important;
-}
-.xbox.edit .face.left::before {
-  transform: rotate(-8deg) !important;
-}
-
-.xbox.edit .face.down {
-  left: 205px !important;
-  top: 182px !important;
-  transform: rotate(8deg) !important;
-}
-.xbox.edit .face.down::before {
-  transform: rotate(-8deg) !important;
-}
-
-.xbox.edit .face.right {
-  left: 310px !important;
-  top: 182px !important;
-  transform: rotate(8deg) !important;
-}
-.xbox.edit .face.right::before {
-  transform: rotate(-8deg) !important;
-}
-
-/* F: place it cleanly above the left-arrow key */
-.xbox.edit .face.up::after {
-  left: 405px !important;  /* absolute visual x ≈ 610 */
-  top: 8px !important;     /* absolute visual y ≈ 90 */
-  transform: rotate(-8deg) !important;
-}
-
-
-/* ============================================================
-   B16 INPUT-LIGHT + F POSITION FIX
-   Append this to the VERY END of b16.css
-   ============================================================ */
-
-/* ------------------------------------------------------------
-   F POSITION
-   F is a clone of D-pad Up, so its position is relative to W.
-   This places it cleanly above the ◀ key.
-   ------------------------------------------------------------ */
-.xbox.edit .face.up::after {
-  left: 405px !important;   /* absolute x ≈ 610 */
-  top: 18px !important;     /* absolute y ≈ 100 */
-  transform: rotate(-8deg) !important;
-}
-
-/* ------------------------------------------------------------
-   FORCE PRESSED STATES FOR DIGITAL BUTTONS
-   ------------------------------------------------------------ */
-.xbox.edit .face.pressed,
-.xbox.edit .button.pressed,
-.xbox.edit .bumper.pressed,
-.xbox.edit .stick.pressed {
-  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
-  border-color: #ffffff !important;
-  box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 28px rgba(255,255,255,.38),
-    inset 0 1px 0 #fff !important;
-}
-
-.xbox.edit .face.pressed::before,
-.xbox.edit .button.pressed::before,
-.xbox.edit .bumper.pressed::before,
-.xbox.edit .stick.pressed::before {
-  color: #11141a !important;
-  text-shadow: none !important;
-}
-
-/* W + F share D-pad Up, so they MUST illuminate together */
-.xbox.edit .face.up.pressed::after {
-  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
-  border-color: #ffffff !important;
-  color: #11141a !important;
-  text-shadow: none !important;
-  box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 28px rgba(255,255,255,.38),
-    inset 0 1px 0 #fff !important;
-}
-
-/* E + Q share R1, so they MUST illuminate together */
-.xbox.edit .bumper.right.pressed::after {
-  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
-  border-color: #ffffff !important;
-  color: #11141a !important;
-  text-shadow: none !important;
-  box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 28px rgba(255,255,255,.38),
-    inset 0 1px 0 #fff !important;
-}
-
-/* ------------------------------------------------------------
-   TRIGGERS
-   GPV commonly drives trigger strength with inline opacity,
-   so keep the active overlays obvious whenever visible.
-   ------------------------------------------------------------ */
-.xbox.edit .trigger {
-  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
-  border-color: #ffffff !important;
-  color: #11141a !important;
-  box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 28px rgba(255,255,255,.38),
-    inset 0 1px 0 #fff !important;
-}
-
-/* Make trigger labels dark when the active overlay appears */
-.xbox.edit .trigger::before {
-  color: #11141a !important;
-  text-shadow: none !important;
-}
-
-/* ------------------------------------------------------------
-   STICK CLICKS
-   Extra specificity for TAB=L3 / CAPS=R3
-   ------------------------------------------------------------ */
-.xbox.edit .stick.left.pressed,
-.xbox.edit .stick.right.pressed {
-  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
-  border-color: #ffffff !important;
-  box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 28px rgba(255,255,255,.38),
-    inset 0 1px 0 #fff !important;
-}
-
-.xbox.edit .stick.left.pressed::before,
-.xbox.edit .stick.right.pressed::before {
-  color: #11141a !important;
-  text-shadow: none !important;
-}
-
-/* ============================================================
-   B16 FIX v6
-   Append this to the VERY END of b16.css
-
-   Fixes:
-   1) ◀ now uses Xbox A / Cross, so it actually lights.
-   2) F uses the otherwise-unused Xbox X visual slot, positioned
-      cleanly above ◀, but its pressed look follows D-pad Up (W).
-   3) > / L2 trigger gets a much stronger pressed-state look.
-   ============================================================ */
-
-/* ------------------------------------------------------------
-   F: stop using the old W pseudo-element clone completely
-   ------------------------------------------------------------ */
-.xbox.edit .face.up::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* Re-purpose the unused Xbox X visual as the F key */
-.xbox.edit .button.x {
-  display: block !important;
-  position: absolute !important;
-  left: 610px !important;
-  top: 90px !important;
-  width: 76px !important;
-  height: 76px !important;
-  transform: none !important;
-  margin: 0 !important;
-}
-
-.xbox.edit .button.x::before {
-  content: "F" !important;
-  transform: none !important;
-}
-
-/* Keep F visually neutral even if Xbox-X itself somehow fires */
-.xbox.edit .button.x.pressed {
-  background: linear-gradient(180deg, #3a3d45 0%, #1a1c21 100%) !important;
-  border-color: rgba(255,255,255,.22) !important;
-  box-shadow:
-    0 7px 0 #07080b,
-    0 10px 17px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.11) !important;
-}
-.xbox.edit .button.x.pressed::before {
-  color: #fff !important;
-  text-shadow: 0 2px 3px rgba(0,0,0,.7) !important;
-}
-
-/* F lights when W / D-pad Up is pressed */
-.controller.xbox.edit:has(.face.up.pressed) .button.x {
-  background: linear-gradient(180deg,#ffffff 0%,#c9cdd5 100%) !important;
-  border-color: #ffffff !important;
-  box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 28px rgba(255,255,255,.38),
-    inset 0 1px 0 #fff !important;
-}
-.controller.xbox.edit:has(.face.up.pressed) .button.x::before {
-  color: #11141a !important;
-  text-shadow: none !important;
-}
-
-/* ------------------------------------------------------------
-   ◀: Cross/X on PlayStation = Xbox A
-   This is the element that should react to your physical ◀ key.
-   ------------------------------------------------------------ */
-.xbox.edit .button.a {
-  display: block !important;
-  position: absolute !important;
-  left: 610px !important;
-  top: 195px !important;
-  width: 76px !important;
-  height: 76px !important;
-  transform: none !important;
-  margin: 0 !important;
-}
-.xbox.edit .button.a::before {
-  content: "◀" !important;
-  transform: none !important;
-}
-
-/* F is now using button.x, so remove the old ◀ label/rule from X */
-.xbox.edit .button.x::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* ------------------------------------------------------------
-   > = L2
-   Make the active analog-trigger overlay much more obvious.
-   ------------------------------------------------------------ */
-.xbox.edit .trigger.left {
-  left: 935px !important;
-  top: 195px !important;
-  width: 76px !important;
-  height: 76px !important;
-  border: 3px solid #fff !important;
-  background: #fff !important;
-  background-image: none !important;
-  box-shadow:
-    0 2px 0 #07080b,
-    0 5px 12px rgba(0,0,0,.30),
-    0 0 34px rgba(255,255,255,.60),
-    inset 0 0 0 2px rgba(255,255,255,.95) !important;
-  filter: brightness(1.15) contrast(1.08) !important;
-}
-
-.xbox.edit .trigger.left::before {
-  content: ">" !important;
-  color: #0c0e12 !important;
-  text-shadow: none !important;
-  font-weight: 900 !important;
-}
-
-/* Keep the neutral > base in exactly the same position */
-.xbox.edit .triggers::after {
-  left: 935px !important;
-  top: 195px !important;
-}
-
-/* B16 WASD TIGHTER SPACING PATCH
-   Append to the VERY END of b16.css */
-
-/* W — centered over S and brought downward */
-.xbox.edit .face.up {
-  left: 205px !important;
-  top: 105px !important;
-}
-
-/* A — move toward S */
-.xbox.edit .face.left {
-  left: 125px !important;
-  top: 182px !important;
-}
-
-/* S — anchor */
-.xbox.edit .face.down {
-  left: 205px !important;
-  top: 182px !important;
-}
-
-/* D — move toward S */
-.xbox.edit .face.right {
-  left: 285px !important;
-  top: 182px !important;
-}
+/* ALT has no gamepad input, so it remains artwork-only and never lights. */
