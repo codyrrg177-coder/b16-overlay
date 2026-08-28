@@ -1237,3 +1237,213 @@ html, body {
     inset 0 0 12px rgba(215,145,255,.14) !important;
   filter: brightness(1.30) saturate(1.20) !important;
 }
+
+/* ============================================================
+   B16 PURPLE OVERLAYS — FINAL ABSOLUTE ALIGNMENT
+   Paste at the VERY END of b16.css.
+
+   IMPORTANT:
+   - Leaves all RED keys untouched.
+   - Leaves CAPS untouched because it is already perfect.
+   - Overrides the earlier 1mm-left / percentage positioning only
+     for the remaining purple controls.
+   - Uses the same 1584×784 coordinate system as the background.
+   ============================================================ */
+
+/* Make the purple coordinate layers use the artwork canvas */
+.xbox.edit .abxy,
+.xbox.edit .bumpers,
+.xbox.edit .triggers {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 1584px !important;
+  height: 784px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ---------- E ---------- */
+.xbox.edit .bumper.right {
+  display: block !important;
+  position: absolute !important;
+  left: 814px !important;
+  top: 281px !important;
+  width: 111px !important;
+  height: 115px !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+/* ---------- Q (shares E / R1) ---------- */
+.xbox.edit .bumper.right::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  box-sizing: border-box !important;
+
+  /* Absolute target: x=1185, y=164 */
+  left: 371px !important;
+  top: -117px !important;
+  width: 112px !important;
+  height: 112px !important;
+
+  transform: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+  pointer-events: none !important;
+}
+
+/* ---------- F (shares W / D-pad Up) ---------- */
+/* Kill the old F pseudo-element completely */
+.xbox.edit .face.up::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Use unused Xbox-X visual layer exactly over F */
+.xbox.edit .button.x {
+  display: block !important;
+  position: absolute !important;
+  left: 936px !important;
+  top: 201px !important;
+  width: 114px !important;
+  height: 114px !important;
+  transform: none !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.xbox.edit .button.x::before,
+.xbox.edit .button.x::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Xbox-X itself should never create a false glow */
+.xbox.edit .button.x.pressed {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* F follows W */
+.controller.xbox.edit:has(.face.up.pressed) .button.x {
+  background: rgba(255,255,255,.045) !important;
+  box-shadow:
+    0 0 9px rgba(195,90,255,.95),
+    0 0 22px rgba(155,20,255,.72),
+    inset 0 0 12px rgba(215,145,255,.14) !important;
+  filter: brightness(1.30) saturate(1.20) !important;
+}
+
+/* ---------- ▲ ---------- */
+.xbox.edit .button.y {
+  display: block !important;
+  position: absolute !important;
+  left: 1063px !important;
+  top: 165px !important;
+  width: 110px !important;
+  height: 111px !important;
+  transform: none !important;
+}
+
+/* ---------- ◀ ---------- */
+.xbox.edit .button.a {
+  display: block !important;
+  position: absolute !important;
+  left: 936px !important;
+  top: 329px !important;
+  width: 115px !important;
+  height: 110px !important;
+  transform: none !important;
+}
+
+/* ---------- ▼ ---------- */
+.xbox.edit .button.b {
+  display: block !important;
+  position: absolute !important;
+  left: 1063px !important;
+  top: 291px !important;
+  width: 111px !important;
+  height: 115px !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+/* ---------- < ---------- */
+.xbox.edit .bumper.left {
+  display: block !important;
+  position: absolute !important;
+  left: 1308px !important;
+  top: 206px !important;
+  width: 106px !important;
+  height: 107px !important;
+  transform: none !important;
+}
+
+/* ---------- ▶ = R2 ---------- */
+.xbox.edit .trigger.right {
+  position: absolute !important;
+  left: 1186px !important;
+  top: 291px !important;
+  width: 111px !important;
+  height: 114px !important;
+  transform: none !important;
+}
+
+/* ---------- > = L2 ---------- */
+.xbox.edit .trigger.left {
+  position: absolute !important;
+  left: 1311px !important;
+  top: 327px !important;
+  width: 108px !important;
+  height: 105px !important;
+  transform: none !important;
+}
+
+/* Keep trigger glow inside the printed key, not as a solid square */
+.xbox.edit .trigger {
+  background: rgba(255,255,255,.02) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 12px !important;
+  box-shadow:
+    0 0 9px rgba(195,90,255,.90),
+    0 0 20px rgba(155,20,255,.58),
+    inset 0 0 11px rgba(215,145,255,.12) !important;
+}
+
+/* Purple digital press glow */
+.xbox.edit .button.y.pressed,
+.xbox.edit .button.a.pressed,
+.xbox.edit .button.b.pressed,
+.xbox.edit .bumper.left.pressed,
+.xbox.edit .bumper.right.pressed {
+  background: rgba(255,255,255,.045) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow:
+    0 0 9px rgba(195,90,255,.95),
+    0 0 22px rgba(155,20,255,.72),
+    inset 0 0 12px rgba(215,145,255,.14) !important;
+  filter: brightness(1.30) saturate(1.20) !important;
+}
+
+/* Q pressed glow */
+.xbox.edit .bumper.right.pressed::after {
+  background: rgba(255,255,255,.045) !important;
+  box-shadow:
+    0 0 9px rgba(195,90,255,.95),
+    0 0 22px rgba(155,20,255,.72),
+    inset 0 0 12px rgba(215,145,255,.14) !important;
+  filter: brightness(1.30) saturate(1.20) !important;
+}
+
+/* CAPS intentionally not overridden here. */
