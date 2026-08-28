@@ -711,3 +711,31 @@ html, body {
 }
 
 /* ALT remains artwork-only because it has no GPV input. */
+/* ============================================================
+   B16 WASD TILT MATCH
+   Append to the VERY END of b16.css.
+   Keeps the current overlay positions and only matches the tilt
+   of the printed WASD keys in the background image.
+   ============================================================ */
+
+.xbox.edit .face.up {
+  transform: rotate(11deg) !important;
+}
+
+.xbox.edit .face.left {
+  transform: rotate(12deg) !important;
+}
+
+.xbox.edit .face.down {
+  transform: rotate(10deg) !important;
+}
+
+.xbox.edit .face.right {
+  transform: rotate(12deg) !important;
+}
+
+/* Keep the duplicated F overlay unaffected by W's rotation */
+.xbox.edit .face.up::after {
+  transform: rotate(-11deg) !important;
+}
+
