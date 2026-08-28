@@ -1553,3 +1553,98 @@ html, body {
 
     filter: brightness(1.65) saturate(1.45) !important;
 }
+/* B16 — UNIFORM PRESS GLOW FOR EVERY KEY
+   Append this at the VERY END of b16.css.
+   NO positioning, dimensions, or rotations are changed.
+
+   Every active key now uses the same brightness, bloom radius,
+   opacity and filter. Red keys keep a red hue; purple keys keep
+   a purple hue, but perceived glow strength is matched.
+*/
+
+/* Shared glow geometry/intensity */
+.xbox.edit .face.pressed,
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.pressed {
+  border: 0 !important;
+  outline: 0 !important;
+  filter: brightness(2.10) saturate(1.55) !important;
+}
+
+/* RED — WASD + TAB */
+.xbox.edit .face.pressed,
+.xbox.edit .stick.left.pressed {
+  background: rgba(255,55,65,.30) !important;
+  box-shadow:
+    inset 0 0 10px rgba(255,255,255,.88),
+    inset 0 0 23px rgba(255,70,80,.60),
+    0 0 7px rgba(255,225,225,1),
+    0 0 15px rgba(255,115,120,1),
+    0 0 28px rgba(255,35,45,1),
+    0 0 44px rgba(255,0,20,.90),
+    0 0 62px rgba(255,0,20,.58) !important;
+}
+
+/* PURPLE — E, ▲, ◀, ▼, <, CAPS and other normal purple inputs */
+.xbox.edit .button.pressed,
+.xbox.edit .bumper.pressed,
+.xbox.edit .stick.right.pressed {
+  background: rgba(190,70,255,.30) !important;
+  box-shadow:
+    inset 0 0 10px rgba(255,255,255,.88),
+    inset 0 0 23px rgba(210,115,255,.60),
+    0 0 7px rgba(250,225,255,1),
+    0 0 15px rgba(225,150,255,1),
+    0 0 28px rgba(190,70,255,1),
+    0 0 44px rgba(150,20,255,.90),
+    0 0 62px rgba(125,0,255,.58) !important;
+}
+
+/* Q duplicate — EXACT same purple glow */
+.xbox.edit .bumper.right.pressed::after {
+  background: rgba(190,70,255,.30) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow:
+    inset 0 0 10px rgba(255,255,255,.88),
+    inset 0 0 23px rgba(210,115,255,.60),
+    0 0 7px rgba(250,225,255,1),
+    0 0 15px rgba(225,150,255,1),
+    0 0 28px rgba(190,70,255,1),
+    0 0 44px rgba(150,20,255,.90),
+    0 0 62px rgba(125,0,255,.58) !important;
+  filter: brightness(2.10) saturate(1.55) !important;
+}
+
+/* F duplicate — EXACT same purple glow, still follows W */
+.controller.xbox.edit:has(.face.up.pressed) .button.x {
+  background: rgba(190,70,255,.30) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow:
+    inset 0 0 10px rgba(255,255,255,.88),
+    inset 0 0 23px rgba(210,115,255,.60),
+    0 0 7px rgba(250,225,255,1),
+    0 0 15px rgba(225,150,255,1),
+    0 0 28px rgba(190,70,255,1),
+    0 0 44px rgba(150,20,255,.90),
+    0 0 62px rgba(125,0,255,.58) !important;
+  filter: brightness(2.10) saturate(1.55) !important;
+}
+
+/* R2 / L2 analog overlays — same visible glow recipe */
+.xbox.edit .trigger {
+  background: rgba(190,70,255,.30) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow:
+    inset 0 0 10px rgba(255,255,255,.88),
+    inset 0 0 23px rgba(210,115,255,.60),
+    0 0 7px rgba(250,225,255,1),
+    0 0 15px rgba(225,150,255,1),
+    0 0 28px rgba(190,70,255,1),
+    0 0 44px rgba(150,20,255,.90),
+    0 0 62px rgba(125,0,255,.58) !important;
+  filter: brightness(2.10) saturate(1.55) !important;
+}
