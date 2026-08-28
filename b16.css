@@ -739,3 +739,28 @@ html, body {
   transform: rotate(-11deg) !important;
 }
 
+
+/* B16 — shift ALL key overlays 1mm left
+   Append at the VERY END of b16.css.
+   1mm ≈ 8px on the 1584px-wide / 198mm artwork canvas. */
+
+.xbox.edit .face.up    { left: calc(24.968% - 8px) !important; }
+.xbox.edit .face.left  { left: calc(14.878% - 8px) !important; }
+.xbox.edit .face.down  { left: calc(23.814% - 8px) !important; }
+.xbox.edit .face.right { left: calc(32.065% - 8px) !important; }
+
+.xbox.edit .bumper.right { left: calc(52.373% - 8px) !important; }
+
+.xbox.edit .button.y { left: calc(68.619% - 8px) !important; }
+.xbox.edit .button.a { left: calc(60.881% - 8px) !important; }
+.xbox.edit .button.b { left: calc(68.619% - 8px) !important; }
+
+.xbox.edit .bumper.left  { left: calc(84.481% - 8px) !important; }
+.xbox.edit .trigger.right { left: calc(75.887% - 8px) !important; }
+.xbox.edit .trigger.left  { left: calc(84.438% - 8px) !important; }
+
+.xbox.edit .stick.left  { left: calc(33.390% - 8px) !important; }
+.xbox.edit .stick.right { left: calc(52.373% - 8px) !important; }
+
+/* F and Q are pseudo-elements attached to W/E, so they move left
+   automatically with their parent overlays. */
